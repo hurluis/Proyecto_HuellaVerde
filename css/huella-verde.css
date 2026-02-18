@@ -620,6 +620,22 @@ img {
     color: var(--hv-white);
 }
 
+/* Botón Contáctenos dentro de servicio expandido */
+.hv-servicio-detail .hv-btn-contactar {
+    margin-top: 20px;
+    margin-left: 16px;
+    font-size: 13px;
+    padding: 10px 24px;
+}
+
+.hv-servicio-detail .hv-detail-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
 /* ===================================
    SECCIÓN VALOR AGREGADO
 =================================== */
@@ -951,7 +967,7 @@ img {
 .hv-footer-logo {
     max-height: 50px;
     margin-bottom: 16px;
-    filter: brightness(0) invert(1);
+    /* No filter needed - using huella_verde_horizontal_dark.png which is designed for dark backgrounds */
 }
 
 .hv-footer-col p {
@@ -1057,26 +1073,33 @@ img {
 
 /* ===================================
    SCROLL TO TOP BUTTON
+   Color verde sólido con flecha blanca
+   para que sea visible en todas las secciones
 =================================== */
 .dmtop {
     position: fixed;
     bottom: -60px;
     right: 25px;
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, var(--hv-green-medium), var(--hv-green-dark));
-    color: var(--hv-white);
+    width: 50px;
+    height: 50px;
+    background: var(--hv-green-dark);
+    color: var(--hv-white) !important;
     border-radius: var(--hv-radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 999;
-    box-shadow: var(--hv-shadow-green);
+    box-shadow: 0 4px 15px rgba(0, 122, 46, 0.4);
     transition: var(--hv-transition);
-    font-size: 18px;
+    font-size: 20px;
     text-indent: 0;
     background-image: none;
+    border: 3px solid var(--hv-green-light);
+}
+
+.dmtop .fa {
+    color: var(--hv-white) !important;
 }
 
 .dmtop.visible {
@@ -1085,7 +1108,8 @@ img {
 
 .dmtop:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 25px rgba(0, 122, 46, 0.4);
+    background: var(--hv-green-medium);
+    box-shadow: 0 6px 25px rgba(0, 122, 46, 0.5);
 }
 
 /* ===================================
@@ -1154,6 +1178,63 @@ img {
     border-width: 6px;
     border-style: solid;
     border-color: transparent transparent transparent var(--hv-black);
+}
+
+/* ===================================
+   FORM MESSAGES (Success/Error)
+=================================== */
+.hv-form-message {
+    padding: 16px 24px;
+    border-radius: var(--hv-radius-sm);
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: opacity 0.3s ease;
+}
+
+.hv-form-message-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 2px solid #a5d6a7;
+}
+
+.hv-form-message-error {
+    background-color: #fce4ec;
+    color: #c62828;
+    border: 2px solid #ef9a9a;
+}
+
+/* Formspree success state (redirect with ?enviado=true) */
+.hv-form-success {
+    background: linear-gradient(135deg, var(--hv-green-bg), var(--hv-green-bg-alt));
+    border: 2px solid var(--hv-green-medium);
+    border-radius: var(--hv-radius-md);
+    padding: 40px 32px;
+    text-align: center;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.hv-form-success i {
+    font-size: 56px;
+    color: var(--hv-green-dark);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.hv-form-success h4 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--hv-green-dark);
+    margin-bottom: 8px;
+}
+
+.hv-form-success p {
+    font-size: 16px;
+    color: var(--hv-gray);
+    margin: 0;
 }
 
 /* ===================================
