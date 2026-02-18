@@ -1,15 +1,17 @@
 /**************************************
     Huella Verde SAS - Main JavaScript
+    Versión: Multi-página
     Funcionalidades:
     - AOS (Animate on Scroll) init
     - Sticky header con efecto scroll
-    - Navegación activa por sección
+    - Navegación activa según página actual
     - Menú hamburguesa móvil
     - Expandir/colapsar servicios
-    - Smooth scroll
+    - Auto-expandir servicio desde hash URL
+    - Smooth scroll interno
     - Botón scroll to top
     - Botón WhatsApp flotante
-    - Formulario de contacto
+    - Formspree: detección de envío exitoso
 **************************************/
 
 (function() {
@@ -20,70 +22,44 @@
     =================================== */
     document.addEventListener('DOMContentLoaded', function() {
         // Inicializar AOS - Animate on Scroll
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out-cubic',
-            once: true,           // Animación solo una vez
-            offset: 80,           // Offset desde el viewport
-            delay: 0,
-            anchorPlacement: 'top-bottom'
-        });
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 80,
+                delay: 0,
+                anchorPlacement: 'top-bottom'
+            });
+        }
+
+        // Auto-expandir servicio si la URL tiene hash (ej: servicios.html#servicio-3)
+        handleServiceHashOnLoad();
+
+        // Detectar parámetro ?enviado=true para el formulario de contacto
+        handleFormspreeSuccess();
     });
 
     /* ===================================
        HEADER STICKY CON EFECTO SCROLL
     =================================== */
     var header = document.getElementById('hv-header');
-    var lastScrollY = 0;
 
     window.addEventListener('scroll', function() {
-        var currentScrollY = window.scrollY;
-
-        if (currentScrollY > 50) {
+        if (!header) return;
+        if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-
-        lastScrollY = currentScrollY;
     });
 
     /* ===================================
-       NAVEGACIÓN ACTIVA POR SECCIÓN
-       (IntersectionObserver)
+       NAVEGACIÓN ACTIVA POR PÁGINA
+       (Detecta la página actual desde la URL)
     =================================== */
-    var sections = document.querySelectorAll('.hv-section[id]');
-    var navLinks = document.querySelectorAll('.hv-nav-link');
-
-    // Observar cada sección para actualizar el menú activo
-    var sectionObserverOptions = {
-        root: null,
-        rootMargin: '-20% 0px -60% 0px',
-        threshold: 0
-    };
-
-    var sectionObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var sectionId = entry.target.getAttribute('id');
-
-                // Remover clase active de todos los links
-                navLinks.forEach(function(link) {
-                    link.classList.remove('active');
-                });
-
-                // Agregar active al link correspondiente
-                var activeLink = document.querySelector('.hv-nav-link[href="#' + sectionId + '"]');
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            }
-        });
-    }, sectionObserverOptions);
-
-    sections.forEach(function(section) {
-        sectionObserver.observe(section);
-    });
+    // La navegación activa ya está marcada en cada HTML con la clase "active"
+    // pero este código lo maneja dinámicamente por si se navega con JS
 
     /* ===================================
        MENÚ HAMBURGUESA (MÓVIL)
@@ -111,17 +87,18 @@
 
     /* ===================================
        SMOOTH SCROLL PARA LINKS DE ANCLA
+       (Solo para anclas en la misma página)
     =================================== */
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
             var targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (targetId === '#' || targetId === '') return;
 
             var targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
                 var headerHeight = header ? header.offsetHeight : 0;
-                var targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                var targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
 
                 window.scrollTo({
                     top: targetPosition,
@@ -134,10 +111,13 @@
     /* ===================================
        EXPANDIR/COLAPSAR SERVICIOS
     =================================== */
-    // Función global para toggle de servicios
     window.toggleServicio = function(btn) {
         var card = btn.closest('.hv-servicio-card');
+        if (!card) return;
+
         var detail = card.querySelector('.hv-servicio-detail');
+        if (!detail) return;
+
         var isExpanded = card.classList.contains('expanded');
 
         // Cerrar todas las tarjetas expandidas primero
@@ -148,7 +128,6 @@
                 if (openDetail) {
                     openDetail.style.display = 'none';
                 }
-                // Restaurar el botón "Ver más"
                 var openBtn = openCard.querySelector('.hv-servicio-body .hv-btn-outline');
                 if (openBtn) {
                     openBtn.innerHTML = 'Ver más <i class="fa fa-plus"></i>';
@@ -183,10 +162,57 @@
                 });
 
                 // Re-iniciar AOS para las nuevas imágenes visibles
-                AOS.refresh();
+                if (typeof AOS !== 'undefined') {
+                    AOS.refresh();
+                }
             }, 100);
         }
     };
+
+    /* ===================================
+       AUTO-EXPANDIR SERVICIO DESDE HASH URL
+       (ej: servicios.html#servicio-3)
+    =================================== */
+    function handleServiceHashOnLoad() {
+        var hash = window.location.hash;
+        if (!hash || !hash.startsWith('#servicio-')) return;
+
+        var targetCard = document.querySelector(hash);
+        if (!targetCard || !targetCard.classList.contains('hv-servicio-card')) return;
+
+        // Esperar a que la página termine de cargar y AOS se inicialice
+        setTimeout(function() {
+            var detail = targetCard.querySelector('.hv-servicio-detail');
+            if (!detail) return;
+
+            // Expandir la tarjeta
+            targetCard.classList.add('expanded');
+            detail.style.display = 'block';
+
+            var verMasBtn = targetCard.querySelector('.hv-servicio-body .hv-btn-outline');
+            if (verMasBtn) {
+                verMasBtn.innerHTML = 'Ver menos <i class="fa fa-minus"></i>';
+            }
+
+            // Scroll hacia la tarjeta
+            var headerHeight = header ? header.offsetHeight : 0;
+            var cardTop = targetCard.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+            window.scrollTo({
+                top: cardTop,
+                behavior: 'smooth'
+            });
+
+            // Refresh AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+            }
+        }, 500);
+    }
+
+    // También escuchar cambios de hash en tiempo real (ej: clic en footer)
+    window.addEventListener('hashchange', function() {
+        handleServiceHashOnLoad();
+    });
 
     /* ===================================
        BOTÓN SCROLL TO TOP
@@ -194,6 +220,7 @@
     var scrollTopBtn = document.getElementById('scrollTop');
 
     window.addEventListener('scroll', function() {
+        if (!scrollTopBtn) return;
         if (window.scrollY > 400) {
             scrollTopBtn.classList.add('visible');
         } else {
@@ -215,8 +242,8 @@
     =================================== */
     var whatsappBtn = document.getElementById('whatsappBtn');
 
-    // Mostrar botón de WhatsApp después de un breve delay
     window.addEventListener('scroll', function() {
+        if (!whatsappBtn) return;
         if (window.scrollY > 200) {
             whatsappBtn.classList.add('visible');
         } else {
@@ -224,7 +251,7 @@
         }
     });
 
-    // También mostrar después de 2 segundos aunque no haya scroll
+    // Mostrar después de 2 segundos aunque no haya scroll
     setTimeout(function() {
         if (whatsappBtn) {
             whatsappBtn.classList.add('visible');
@@ -232,113 +259,29 @@
     }, 2000);
 
     /* ===================================
-       FORMULARIO DE CONTACTO
-       (Validación básica del frontend)
-
-       NOTA: Para enviar correo a huellaverde@live.com
-       se necesita un backend. Opciones:
-       1. NodeMailer con Express.js
-       2. Formspree.io (agregar action del form)
-       3. EmailJS (frontend-only)
-       4. PHP mail() en hosting con PHP
+       FORMSPREE: DETECCIÓN DE ENVÍO EXITOSO
+       (La página contacto.html redirige a
+        contacto.html?enviado=true después del
+        envío exitoso en Formspree)
     =================================== */
-    var contactForm = document.getElementById('contactForm');
+    function handleFormspreeSuccess() {
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('enviado') !== 'true') return;
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        var successMsg = document.getElementById('formSuccessMessage');
+        var contactForm = document.getElementById('contactForm');
 
-            var email = document.getElementById('email').value.trim();
-            var nombre = document.getElementById('nombre').value.trim();
-            var mensaje = document.getElementById('mensaje').value.trim();
+        if (successMsg) {
+            successMsg.style.display = 'block';
+        }
+        if (contactForm) {
+            contactForm.style.display = 'none';
+        }
 
-            // Validación básica
-            if (!email) {
-                showFormMessage('Por favor ingresa tu correo electrónico.', 'error');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                showFormMessage('Por favor ingresa un correo electrónico válido.', 'error');
-                return;
-            }
-
-            // Simular envío exitoso (reemplazar con lógica real de envío)
-            var submitBtn = contactForm.querySelector('.hv-btn-submit');
-            var originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Enviando...';
-            submitBtn.disabled = true;
-
-            // Simulación de envío
-            setTimeout(function() {
-                submitBtn.innerHTML = '<i class="fa fa-check"></i> Enviado';
-                showFormMessage('¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.', 'success');
-
-                // Resetear formulario después de 3 segundos
-                setTimeout(function() {
-                    contactForm.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 3000);
-            }, 1500);
-        });
+        // Limpiar el parámetro de la URL sin recargar la página
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
     }
-
-    function isValidEmail(email) {
-        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    }
-
-    function showFormMessage(message, type) {
-        // Remover mensaje anterior si existe
-        var existing = document.querySelector('.hv-form-message');
-        if (existing) existing.remove();
-
-        var msgEl = document.createElement('div');
-        msgEl.className = 'hv-form-message hv-form-message-' + type;
-        msgEl.innerHTML = '<i class="fa fa-' + (type === 'success' ? 'check-circle' : 'exclamation-circle') + '"></i> ' + message;
-
-        var form = document.getElementById('contactForm');
-        form.parentNode.insertBefore(msgEl, form.nextSibling);
-
-        // Auto-remover después de 5 segundos
-        setTimeout(function() {
-            if (msgEl.parentNode) {
-                msgEl.style.opacity = '0';
-                setTimeout(function() {
-                    if (msgEl.parentNode) msgEl.remove();
-                }, 300);
-            }
-        }, 5000);
-    }
-
-    /* ===================================
-       ESTILOS DINÁMICOS PARA MENSAJES
-       DEL FORMULARIO
-    =================================== */
-    var formStyles = document.createElement('style');
-    formStyles.textContent = '' +
-        '.hv-form-message {' +
-        '    padding: 14px 20px;' +
-        '    border-radius: 8px;' +
-        '    margin-top: 16px;' +
-        '    font-size: 14px;' +
-        '    font-weight: 600;' +
-        '    display: flex;' +
-        '    align-items: center;' +
-        '    gap: 10px;' +
-        '    transition: opacity 0.3s ease;' +
-        '}' +
-        '.hv-form-message-success {' +
-        '    background-color: #e8f5e9;' +
-        '    color: #2e7d32;' +
-        '    border: 1px solid #a5d6a7;' +
-        '}' +
-        '.hv-form-message-error {' +
-        '    background-color: #fce4ec;' +
-        '    color: #c62828;' +
-        '    border: 1px solid #ef9a9a;' +
-        '}';
-    document.head.appendChild(formStyles);
 
 })();
