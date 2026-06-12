@@ -77,6 +77,12 @@
         WHEEL_FACTOR: 0.55
     };
 
+    // En la página de clientes el scroll va al 50%: cada logo
+    // y estadística se aprecia con calma
+    if (document.querySelector('.hv-marquee-wrap')) {
+        sm.WHEEL_FACTOR = 0.28;
+    }
+
     function smoothStep() {
         if (!sm.active) return false;
         sm.tgt = clamp(sm.tgt, 0, maxScroll());
@@ -286,24 +292,43 @@
     =================================== */
     var vjSection = document.querySelector('.hv-valor-journey');
     var vjHeader = vjSection ? vjSection.querySelector('.hv-scroll-header') : null;
-    var vjSteps = vjSection ? vjSection.querySelectorAll('.hv-vj-step') : [];
+    var vjMedia = vjSection ? vjSection.querySelector('.hv-vj-media') : null;
+    var vjCam = vjSection ? vjSection.querySelector('.hv-vj-cam') : null;
+    var vjStops = vjCam ? vjCam.querySelectorAll('.hv-vj-stop') : [];
     var vjBigNum = vjSection ? vjSection.querySelector('.hv-vj-bignum') : null;
     var vjNum = vjSection ? vjSection.querySelector('.hv-vj-num') : null;
     var vjLine = vjSection ? vjSection.querySelector('.hv-vj-line-fill') : null;
-    var vj = { pos: 0, tgt: 0, gate: 0, p: 0, EASE: 0.08 };
+    var vj = { pos: 0, tgt: 0, gate: 0, p: 0, EASE: 0.075, pts: [] };
 
     var VJ_START = 0.09;
     var VJ_SPAN = 0.88;
 
-    function renderVj() {
-        if (!vjSection || vjSteps.length < 2) return;
+    // Zigzag del lienzo: cada razón sale por una esquina mientras
+    // la siguiente llega por la opuesta (mismo lenguaje que inicio)
+    if (vjStops.length) {
+        for (var s = 0; s < vjStops.length; s++) {
+            var zx = s === 0 ? 0 : (s % 2 === 1 ? 56 : -54) + (s % 3) * 2;
+            var zy = s * 58;
+            vj.pts.push({ x: zx, y: zy });
+            vjStops[s].style.left = zx + 'vw';
+            vjStops[s].style.top = zy + 'vh';
+        }
+    }
 
-        for (var i = 0; i < vjSteps.length; i++) {
-            var weight = 1 - Math.min(1, Math.abs(vj.pos - i));
-            var op = weight * vj.gate;
-            vjSteps[i].style.opacity = op.toFixed(3);
-            var ty = reducedMotion ? 0 : (1 - weight) * 44;
-            vjSteps[i].style.transform = 'translate(-50%, -50%) translate3d(0, ' + ty.toFixed(1) + 'px, 0)';
+    function renderVj() {
+        if (!vjCam || vjStops.length < 2) return;
+
+        var i = Math.min(vj.pts.length - 2, Math.floor(vj.pos));
+        var t = vj.pos - i;
+        var x = lerp(vj.pts[i].x, vj.pts[i + 1].x, t);
+        var y = lerp(vj.pts[i].y, vj.pts[i + 1].y, t);
+        vjCam.style.transform = 'translate3d(' + (-x).toFixed(3) + 'vw, ' + (-y).toFixed(3) + 'vh, 0)';
+
+        vjMedia.style.opacity = vj.gate.toFixed(3);
+
+        for (var k = 0; k < vjStops.length; k++) {
+            var weight = 1 - Math.min(1, Math.abs(vj.pos - k));
+            vjStops[k].style.opacity = (0.15 + 0.85 * weight).toFixed(3);
         }
 
         var current = Math.round(vj.pos) + 1;
@@ -312,24 +337,19 @@
         // Número gigante de fondo (estilo specs)
         if (vjBigNum) {
             if (vjBigNum.textContent !== label) vjBigNum.textContent = label;
-            vjBigNum.style.opacity = (0.9 * vj.gate).toFixed(3);
-            if (!reducedMotion) {
-                var driftX = (vj.pos / Math.max(1, vjSteps.length - 1) - 0.5) * 8;
-                vjBigNum.style.transform =
-                    'translate(-50%, -52%) translate3d(' + driftX.toFixed(2) + 'vw, 0, 0)';
-            }
+            vjBigNum.style.opacity = (0.85 * vj.gate).toFixed(3);
         }
 
         if (vjNum) {
             vjNum.textContent = label;
         }
         if (vjLine) {
-            vjLine.style.transform = 'scaleX(' + (vj.pos / Math.max(1, vjSteps.length - 1)).toFixed(4) + ')';
+            vjLine.style.transform = 'scaleX(' + (vj.pos / Math.max(1, vjStops.length - 1)).toFixed(4) + ')';
         }
     }
 
     function vjStep() {
-        if (!vjSection || vjSteps.length < 2) return false;
+        if (!vjCam || vjStops.length < 2) return false;
         var diff = vj.tgt - vj.pos;
         if (Math.abs(diff) < 0.0012) {
             if (vj.pos !== vj.tgt) {
@@ -397,6 +417,12 @@
     =================================== */
     var parallaxImgs = Array.prototype.slice.call(
         document.querySelectorAll('.hv-servicio-img img')
+    );
+
+    // Filas de la marquesina: el scroll también las empuja
+    // en direcciones opuestas (sensación de velocidad)
+    var marqueeRows = Array.prototype.slice.call(
+        document.querySelectorAll('.hv-marquee')
     );
 
     function renderParallaxImgs() {
@@ -498,7 +524,7 @@
             }
 
             vj.gate = clamp01((vp - 0.06) / 0.08);
-            vj.tgt = clamp01((vp - VJ_START) / VJ_SPAN) * (vjSteps.length - 1);
+            vj.tgt = clamp01((vp - VJ_START) / VJ_SPAN) * (vjStops.length - 1);
 
             if (reducedMotion) {
                 vj.pos = vj.tgt;
@@ -511,6 +537,13 @@
         // Parallax de portadas de servicios
         if (parallaxImgs.length) {
             renderParallaxImgs();
+        }
+
+        // La marquesina responde al scroll (filas en direcciones opuestas)
+        if (marqueeRows.length === 2 && !reducedMotion) {
+            var mShift = (scrollY * 0.08).toFixed(1);
+            marqueeRows[0].style.transform = 'translate3d(-' + mShift + 'px, 0, 0)';
+            marqueeRows[1].style.transform = 'translate3d(' + mShift + 'px, 0, 0)';
         }
 
         // Contadores de estadísticas

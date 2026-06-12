@@ -690,34 +690,43 @@ a:hover {
     user-select: none;
 }
 
-.hv-vj-steps {
+/* Lienzo virtual: la cámara viaja en zigzag entre las razones */
+.hv-vj-media {
     position: absolute;
     inset: 0;
     z-index: 2;
+    opacity: 0; /* el JS lo revela cuando el título se va */
+    will-change: opacity;
 }
 
-.hv-vj-step {
+.hv-vj-cam {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
-    width: min(86vw, 780px);
-    text-align: center;
-    opacity: 0;
-    will-change: transform, opacity;
+    width: 0;
+    height: 0;
+    will-change: transform;
 }
 
-.hv-vj-step .hv-valor-icon {
+.hv-vj-stop {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: min(86vw, 760px);
+    text-align: center;
+    will-change: opacity;
+}
+
+.hv-vj-stop .hv-valor-icon {
     width: 84px;
     height: 84px;
     margin: 0 auto 28px;
 }
 
-.hv-vj-step .hv-valor-icon i {
+.hv-vj-stop .hv-valor-icon i {
     font-size: 34px;
 }
 
-.hv-vj-step h3 {
+.hv-vj-stop h3 {
     font-family: var(--hv-font-heading);
     font-size: clamp(26px, 3.6vw, 44px);
     font-weight: 800;
@@ -878,12 +887,13 @@ a:hover {
     gap: 22px;
     padding: 10px 0;
     overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
 .hv-marquee {
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    overflow: visible;
+    will-change: transform; /* el scroll también la empuja suavemente */
 }
 
 .hv-marquee-track {
@@ -1129,8 +1139,9 @@ a:hover {
     .hv-valor-journey { height: 580vh; }
     .hv-vj-bignum { font-size: 70vw; }
     .hv-vj-counter { right: 16px; bottom: 22px; }
-    .hv-vj-step .hv-valor-icon { width: 68px; height: 68px; }
-    .hv-vj-step .hv-valor-icon i { font-size: 28px; }
+    .hv-vj-stop .hv-valor-icon { width: 68px; height: 68px; }
+    .hv-vj-stop .hv-valor-icon i { font-size: 28px; }
+    .hv-vj-stop h3 { font-size: 22px; }
 
     .hv-valor-grid-items { grid-template-columns: 1fr; gap: 14px; }
     .hv-stats { grid-template-columns: 1fr; gap: 14px; margin-bottom: 50px; }
