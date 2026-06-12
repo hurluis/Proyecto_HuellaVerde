@@ -1,0 +1,20 @@
+# Carpetas locales que no deben publicarse
+_imagenes-sin-usar/
+.claude/
+.vscode/
+
+# Fuentes sin minificar (en producción se usan los .min)
+css/bootstrap.css
+css/huella-verde.css
+css/hv-animations.css
+js/huella-verde.js
+js/hv-animations.js
+js/hv-contact.js
+
+# Archivos legacy de la plantilla original (no referenciados)
+style.css
+css/colors.css
+css/responsive.css
+css/version/
+js/custom.js
+js/garden-map.js
