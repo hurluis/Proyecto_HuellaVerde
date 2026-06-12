@@ -15,8 +15,8 @@
     <meta name="author" content="Huella Verde SAS">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="images/Fabicon-icon.png">
+    <link rel="apple-touch-icon" href="images/Fabicon-icon.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- FontAwesome Icons core CSS -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -33,10 +33,28 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <!-- Custom Huella Verde styles -->
-    <link href="css/huella-verde.css" rel="stylesheet">
+    <link href="css/huella-verde.min.css" rel="stylesheet">
+
+    <!-- Fondo vivo + animaciones de scroll -->
+    <link href="css/hv-animations.min.css" rel="stylesheet">
 
 </head>
 <body>
+
+    <!-- =============================================
+         FONDO CINEMATOGRAFICO GLOBAL
+         7 frames que se animan con el scroll + hojas
+    ============================================= -->
+    <div class="hv-bg" aria-hidden="true">
+        <div class="hv-frame hv-frame--1"></div>
+        <div class="hv-frame hv-frame--2"></div>
+        <div class="hv-frame hv-frame--3"></div>
+        <div class="hv-frame hv-frame--4"></div>
+        <div class="hv-frame hv-frame--5"></div>
+        <div class="hv-frame hv-frame--6"></div>
+        <div class="hv-frame hv-frame--7"></div>
+        <div class="hv-bg-leaves"></div>
+    </div>
 
     <div id="wrapper">
 
@@ -51,11 +69,6 @@
                         <span><i class="fa fa-phone"></i> +57 311 583 6788</span>
                         <span><i class="fa fa-envelope"></i> huellaverde@live.com</span>
                     </div>
-                    <div class="hv-topbar-right">
-                        <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -67,7 +80,7 @@
             <div class="container">
                 <div class="hv-header-inner">
                     <a href="inicio.html" class="hv-logo">
-                        <img src="images/huella_verde_horizontal.png" alt="Huella Verde SAS">
+                        <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS">
                     </a>
 
                     <!-- Hamburger para móvil -->
@@ -109,7 +122,7 @@
                     <div class="hv-contacto-info" data-aos="fade-right" data-aos-duration="800">
                         <div class="hv-info-card">
                             <div class="hv-info-card-header">
-                                <img src="images/huella_verde.png" alt="Huella Verde SAS" class="hv-contact-logo">
+                                <img src="images/Fabicon-icon.png" alt="Huella Verde SAS" class="hv-contact-logo">
                                 <h4>Medellín, Colombia</h4>
                             </div>
                             <div class="hv-info-item">
@@ -143,35 +156,44 @@
                         </div>
                     </div>
 
-                    <!-- Columna 2: Formulario de contacto con Formspree -->
+                    <!-- Columna 2: Formulario de contacto con FormSubmit -->
                     <div class="hv-contacto-form" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                         <h3>Envíanos un mensaje</h3>
 
                         <!--
-                            FORMSPREE CONFIGURATION:
-                            Current form ID: xpwzgkdl (test/placeholder)
-                            To use your own Formspree account:
-                            1. Go to https://formspree.io and create a free account
-                            2. Create a new form with target email: huellaverde@live.com
-                            3. Replace "xpwzgkdl" in the action URL with your new form ID
+                            CONFIGURACIÓN DEL FORMULARIO (FormSubmit):
+                            Servicio gratuito https://formsubmit.co - sin registro ni API key.
+                            Los mensajes llegan a: huellaverde@live.com
 
-                            Hidden fields:
-                            - _subject: Email subject line
-                            - _next: Redirect URL after submission (shows success message)
-                            - _gotcha: Honeypot spam protection (hidden from users)
+                            ACTIVACIÓN (solo una vez):
+                            El primer envío genera un correo de FormSubmit a
+                            huellaverde@live.com con un botón "Activate".
+                            Hay que pulsarlo una única vez; desde entonces
+                            todos los mensajes llegan a la bandeja de entrada.
+
+                            El envío real lo hace js/hv-contact.js vía AJAX
+                            (sin recargar la página). El action de abajo es el
+                            respaldo para navegadores sin JavaScript.
+
+                            Campos ocultos:
+                            - _subject: asunto del correo
+                            - _template: formato tabla (más legible)
+                            - _captcha: false (sin captcha intermedio)
+                            - _honey: trampa anti-spam (invisible para humanos)
                         -->
 
-                        <!-- Mensaje de éxito (se muestra al regresar de Formspree) -->
+                        <!-- Mensaje de éxito (se muestra tras el envío) -->
                         <div id="formSuccessMessage" class="hv-form-success" style="display:none;">
                             <i class="fa fa-check-circle"></i>
                             <h4>Mensaje enviado correctamente</h4>
                             <p>Gracias por contactarnos. Te responderemos lo antes posible.</p>
                         </div>
 
-                        <form id="contactForm" action="https://formspree.io/f/xpwzgkdl" method="POST">
+                        <form id="contactForm" action="https://formsubmit.co/huellaverde@live.com" method="POST">
                             <input type="hidden" name="_subject" value="Nuevo mensaje desde Huella Verde Web">
-                            <input type="hidden" name="_next" value="contacto.html?enviado=true">
-                            <input type="text" name="_gotcha" style="display:none">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                             <div class="hv-form-group">
                                 <label for="email">Correo electrónico *</label>
                                 <input type="email" id="email" name="email" required placeholder="tu@correo.com">
@@ -225,12 +247,6 @@
                         <div class="hv-footer-col">
                             <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS" class="hv-footer-logo">
                             <p>Empresa privada colombiana de servicios socioambientales. Profesionales comprometidos con el entorno social, ambiental y empresarial desde 2002.</p>
-                            <div class="hv-footer-social">
-                                <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                                <a href="#" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
-                            </div>
                         </div>
 
                         <!-- Col 2: Mapa del sitio -->
@@ -249,12 +265,14 @@
                         <div class="hv-footer-col">
                             <h4>Servicios</h4>
                             <ul>
-                                <li><a href="servicios.html#servicio-1">Gestión Socioambiental</a></li>
+                                <li><a href="servicios.html#servicio-1">Gestión Ambiental y Sostenibilidad</a></li>
                                 <li><a href="servicios.html#servicio-2">Consultas Previas</a></li>
-                                <li><a href="servicios.html#servicio-3">Estudios Ambientales</a></li>
-                                <li><a href="servicios.html#servicio-4">Gestión del Riesgo</a></li>
-                                <li><a href="servicios.html#servicio-5">Estudios Ecológicos</a></li>
-                                <li><a href="servicios.html#servicio-6">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-3">Gestión Social</a></li>
+                                <li><a href="servicios.html#servicio-4">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-5">Gestión del Riesgo</a></li>
+                                <li><a href="servicios.html#servicio-6">Estudios Ecológicos</a></li>
+                                <li><a href="servicios.html#servicio-7">Información Geográfica</a></li>
+                                <li><a href="servicios.html#servicio-8">Monitoreo y Permisos</a></li>
                             </ul>
                         </div>
 
@@ -305,8 +323,13 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <!-- Huella Verde Custom JS -->
-    <script src="js/huella-verde.js"></script>
+    <script src="js/huella-verde.min.js"></script>
 
+    <!-- Motor de animaciones (fondo vivo, parallax, scroll 3D) -->
+    <script src="js/hv-animations.min.js"></script>
+
+    <!-- Envío del formulario de contacto (FormSubmit AJAX) -->
+    <script src="js/hv-contact.min.js"></script>
 
 </body>
 </html>

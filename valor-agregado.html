@@ -15,8 +15,8 @@
     <meta name="author" content="Huella Verde SAS">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="images/Fabicon-icon.png">
+    <link rel="apple-touch-icon" href="images/Fabicon-icon.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- FontAwesome Icons core CSS -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -33,10 +33,28 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <!-- Custom Huella Verde styles -->
-    <link href="css/huella-verde.css" rel="stylesheet">
+    <link href="css/huella-verde.min.css" rel="stylesheet">
+
+    <!-- Fondo vivo + animaciones de scroll -->
+    <link href="css/hv-animations.min.css" rel="stylesheet">
 
 </head>
 <body>
+
+    <!-- =============================================
+         FONDO CINEMATOGRAFICO GLOBAL
+         7 frames que se animan con el scroll + hojas
+    ============================================= -->
+    <div class="hv-bg" aria-hidden="true">
+        <div class="hv-frame hv-frame--1"></div>
+        <div class="hv-frame hv-frame--2"></div>
+        <div class="hv-frame hv-frame--3"></div>
+        <div class="hv-frame hv-frame--4"></div>
+        <div class="hv-frame hv-frame--5"></div>
+        <div class="hv-frame hv-frame--6"></div>
+        <div class="hv-frame hv-frame--7"></div>
+        <div class="hv-bg-leaves"></div>
+    </div>
 
     <div id="wrapper">
 
@@ -51,11 +69,6 @@
                         <span><i class="fa fa-phone"></i> +57 311 583 6788</span>
                         <span><i class="fa fa-envelope"></i> huellaverde@live.com</span>
                     </div>
-                    <div class="hv-topbar-right">
-                        <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -67,7 +80,7 @@
             <div class="container">
                 <div class="hv-header-inner">
                     <a href="inicio.html" class="hv-logo">
-                        <img src="images/huella_verde_horizontal.png" alt="Huella Verde SAS">
+                        <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS">
                     </a>
 
                     <!-- Hamburger para móvil -->
@@ -93,159 +106,135 @@
         <!-- =============================================
              SECCIÓN: VALOR AGREGADO - 11 items
         ============================================= -->
-        <section id="valor-agregado" class="hv-section hv-valor">
-            <div class="container">
-                <div class="hv-section-header" data-aos="fade-up" data-aos-duration="800">
+        <section id="valor-agregado" class="hv-valor-journey">
+            <div class="hv-vj-sticky">
+
+                <!-- Número gigante de fondo (estilo specs) -->
+                <div class="hv-vj-bignum" aria-hidden="true">01</div>
+
+                <!-- Titulo de entrada: se desvanece al iniciar el recorrido -->
+                <div class="hv-scroll-header">
                     <span class="hv-section-tag">Por qué elegirnos</span>
-                    <h2 class="hv-section-title">VALOR AGREGADO</h2>
-                    <div class="hv-title-divider center"></div>
+                    <h2 class="hv-scroll-title">
+                        Once razones para dejar tu proyecto en
+                        <span>Buenas Manos</span>
+                    </h2>
+                    <p class="hv-scroll-subtitle">
+                        Nuestro valor agregado. Sigue bajando para descubrir,
+                        una a una, las razones que nos hacen diferentes.
+                    </p>
                 </div>
 
-                <div class="hv-valor-list">
-
-                    <!-- 1. Personal especializado -->
-                    <div class="hv-valor-item" data-aos="fade-right" data-aos-duration="700">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-graduation-cap"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Personal especializado en el área ambiental y social</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_sq_01.jpg" alt="Personal especializado" class="img-fluid">
-                        </div>
+                <!-- Las 11 razones, una a la vez -->
+                <div class="hv-vj-steps">
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-graduation-cap"></i></div>
+                        <h3>Personal especializado en el área ambiental y social</h3>
                     </div>
-
-                    <!-- 2. Experiencia profesionales -->
-                    <div class="hv-valor-item alt" data-aos="fade-left" data-aos-duration="700" data-aos-delay="100">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-briefcase"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Experiencia de los profesionales</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_sq_02.jpg" alt="Experiencia profesional" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-briefcase"></i></div>
+                        <h3>Experiencia de los profesionales</h3>
                     </div>
-
-                    <!-- 3. Convicción ambientalista -->
-                    <div class="hv-valor-item" data-aos="fade-right" data-aos-duration="700" data-aos-delay="200">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-heart"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Convicción y espíritu ambientalista</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_sq_03.jpg" alt="Espíritu ambientalista" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-heart"></i></div>
+                        <h3>Convicción y espíritu ambientalista</h3>
                     </div>
-
-                    <!-- 4. Conflictos socio ambientales -->
-                    <div class="hv-valor-item alt" data-aos="fade-left" data-aos-duration="700" data-aos-delay="300">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-handshake-o"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Expertos en soluciones de conflictos socio ambientales</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_sq_04.jpg" alt="Soluciones de conflictos" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-handshake-o"></i></div>
+                        <h3>Expertos en soluciones de conflictos socio ambientales</h3>
                     </div>
-
-                    <!-- 5. Calidad y cumplimiento -->
-                    <div class="hv-valor-item" data-aos="fade-right" data-aos-duration="700" data-aos-delay="400">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-check-circle"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Calidad y cumplimiento</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_sq_05.jpg" alt="Calidad y cumplimiento" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-check-circle"></i></div>
+                        <h3>Calidad y cumplimiento</h3>
                     </div>
-
-                    <!-- 6. SIG -->
-                    <div class="hv-valor-item alt" data-aos="fade-left" data-aos-duration="700" data-aos-delay="500">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-map-o"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Utilización de SIG (sistema de información geográfica)</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_sq_06.jpg" alt="Sistema de información geográfica" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-map-o"></i></div>
+                        <h3>Utilización de SIG (sistema de información geográfica)</h3>
                     </div>
-
-                    <!-- 7. Base de Datos Georreferenciadas -->
-                    <div class="hv-valor-item" data-aos="fade-right" data-aos-duration="700" data-aos-delay="100">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-database"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Base de Datos Georreferenciadas</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_sq_07.jpg" alt="Base de datos georreferenciadas" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-database"></i></div>
+                        <h3>Base de Datos Georreferenciadas</h3>
                     </div>
-
-                    <!-- 8. Cartografía Digital -->
-                    <div class="hv-valor-item alt" data-aos="fade-left" data-aos-duration="700" data-aos-delay="200">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-desktop"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Cartografía Digital</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_sq_08.jpg" alt="Cartografía digital" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-desktop"></i></div>
+                        <h3>Cartografía Digital</h3>
                     </div>
-
-                    <!-- 9. Evaluación y seguimiento -->
-                    <div class="hv-valor-item" data-aos="fade-right" data-aos-duration="700" data-aos-delay="300">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-line-chart"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Evaluación y seguimiento</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_sq_09.jpg" alt="Evaluación y seguimiento" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-line-chart"></i></div>
+                        <h3>Evaluación y seguimiento</h3>
                     </div>
-
-                    <!-- 10. Minorías étnicas -->
-                    <div class="hv-valor-item alt" data-aos="fade-left" data-aos-duration="700" data-aos-delay="400">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-group"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Experiencia trabajo ambiental con minorías étnicas</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_single_02.jpg" alt="Trabajo con minorías étnicas" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-group"></i></div>
+                        <h3>Experiencia trabajo ambiental con minorías étnicas</h3>
                     </div>
-
-                    <!-- 11. Proyectos de impacto nacional -->
-                    <div class="hv-valor-item" data-aos="fade-right" data-aos-duration="700" data-aos-delay="500">
-                        <div class="hv-valor-icon">
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="hv-valor-content">
-                            <h4>Participación de los profesionales en proyectos de impacto nacional</h4>
-                        </div>
-                        <div class="hv-valor-img">
-                            <img src="upload/garden_single_03.jpg" alt="Proyectos de impacto nacional" class="img-fluid">
-                        </div>
+                    <div class="hv-vj-step">
+                        <div class="hv-valor-icon"><i class="fa fa-star"></i></div>
+                        <h3>Participación de los profesionales en proyectos de impacto nacional</h3>
                     </div>
+                </div>
 
+                <!-- Contador y linea de progreso -->
+                <div class="hv-vj-counter"><span class="hv-vj-num">01</span> / 11</div>
+                <div class="hv-vj-line"><span class="hv-vj-line-fill"></span></div>
+
+            </div>
+        </section>
+
+        <!-- =============================================
+             RESUMEN: todo el valor de un vistazo
+        ============================================= -->
+        <section class="hv-section hv-valor-grid" id="valor-resumen">
+            <div class="container">
+                <div class="hv-section-header" data-aos="fade-up" data-aos-duration="800">
+                    <span class="hv-section-tag">De un vistazo</span>
+                    <h2 class="hv-section-title">TODO NUESTRO VALOR</h2>
+                    <div class="hv-title-divider center"></div>
+                </div>
+                <div class="hv-valor-grid-items">
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-graduation-cap"></i></div>
+                        <span>Personal especializado en el área ambiental y social</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-briefcase"></i></div>
+                        <span>Experiencia de los profesionales</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-heart"></i></div>
+                        <span>Convicción y espíritu ambientalista</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-handshake-o"></i></div>
+                        <span>Expertos en soluciones de conflictos socio ambientales</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-check-circle"></i></div>
+                        <span>Calidad y cumplimiento</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-map-o"></i></div>
+                        <span>Utilización de SIG (sistema de información geográfica)</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-database"></i></div>
+                        <span>Base de Datos Georreferenciadas</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-desktop"></i></div>
+                        <span>Cartografía Digital</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-line-chart"></i></div>
+                        <span>Evaluación y seguimiento</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-group"></i></div>
+                        <span>Experiencia trabajo ambiental con minorías étnicas</span>
+                    </div>
+                    <div class="hv-valor-chip" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                        <div class="hv-valor-chip-icon"><i class="fa fa-star"></i></div>
+                        <span>Participación de los profesionales en proyectos de impacto nacional</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -261,12 +250,6 @@
                         <div class="hv-footer-col">
                             <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS" class="hv-footer-logo">
                             <p>Empresa privada colombiana de servicios socioambientales. Profesionales comprometidos con el entorno social, ambiental y empresarial desde 2002.</p>
-                            <div class="hv-footer-social">
-                                <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                                <a href="#" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
-                            </div>
                         </div>
 
                         <!-- Col 2: Mapa del sitio -->
@@ -285,12 +268,14 @@
                         <div class="hv-footer-col">
                             <h4>Servicios</h4>
                             <ul>
-                                <li><a href="servicios.html#servicio-1">Gestión Socioambiental</a></li>
+                                <li><a href="servicios.html#servicio-1">Gestión Ambiental y Sostenibilidad</a></li>
                                 <li><a href="servicios.html#servicio-2">Consultas Previas</a></li>
-                                <li><a href="servicios.html#servicio-3">Estudios Ambientales</a></li>
-                                <li><a href="servicios.html#servicio-4">Gestión del Riesgo</a></li>
-                                <li><a href="servicios.html#servicio-5">Estudios Ecológicos</a></li>
-                                <li><a href="servicios.html#servicio-6">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-3">Gestión Social</a></li>
+                                <li><a href="servicios.html#servicio-4">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-5">Gestión del Riesgo</a></li>
+                                <li><a href="servicios.html#servicio-6">Estudios Ecológicos</a></li>
+                                <li><a href="servicios.html#servicio-7">Información Geográfica</a></li>
+                                <li><a href="servicios.html#servicio-8">Monitoreo y Permisos</a></li>
                             </ul>
                         </div>
 
@@ -341,7 +326,10 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <!-- Huella Verde Custom JS -->
-    <script src="js/huella-verde.js"></script>
+    <script src="js/huella-verde.min.js"></script>
+
+    <!-- Motor de animaciones (fondo vivo, parallax, scroll 3D) -->
+    <script src="js/hv-animations.min.js"></script>
 
 </body>
 </html>
