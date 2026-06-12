@@ -15,8 +15,8 @@
     <meta name="author" content="Huella Verde SAS">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="images/Fabicon-icon.png">
+    <link rel="apple-touch-icon" href="images/Fabicon-icon.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- FontAwesome Icons core CSS -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -33,10 +33,28 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <!-- Custom Huella Verde styles -->
-    <link href="css/huella-verde.css" rel="stylesheet">
+    <link href="css/huella-verde.min.css" rel="stylesheet">
+
+    <!-- Fondo vivo + animaciones de scroll -->
+    <link href="css/hv-animations.min.css?v=2" rel="stylesheet">
 
 </head>
 <body>
+
+    <!-- =============================================
+         FONDO CINEMATOGRAFICO GLOBAL
+         7 frames que se animan con el scroll + hojas
+    ============================================= -->
+    <div class="hv-bg" aria-hidden="true">
+        <div class="hv-frame hv-frame--1"></div>
+        <div class="hv-frame hv-frame--2"></div>
+        <div class="hv-frame hv-frame--3"></div>
+        <div class="hv-frame hv-frame--4"></div>
+        <div class="hv-frame hv-frame--5"></div>
+        <div class="hv-frame hv-frame--6"></div>
+        <div class="hv-frame hv-frame--7"></div>
+        <div class="hv-bg-leaves"></div>
+    </div>
 
     <div id="wrapper">
 
@@ -51,11 +69,6 @@
                         <span><i class="fa fa-phone"></i> +57 311 583 6788</span>
                         <span><i class="fa fa-envelope"></i> huellaverde@live.com</span>
                     </div>
-                    <div class="hv-topbar-right">
-                        <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -67,7 +80,7 @@
             <div class="container">
                 <div class="hv-header-inner">
                     <a href="inicio.html" class="hv-logo">
-                        <img src="images/huella_verde_horizontal.png" alt="Huella Verde SAS">
+                        <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS">
                     </a>
 
                     <!-- Hamburger para móvil -->
@@ -99,46 +112,99 @@
                     <span class="hv-section-tag">Quiénes confían en nosotros</span>
                     <h2 class="hv-section-title">NUESTROS CLIENTES</h2>
                     <div class="hv-title-divider center"></div>
-                    <p class="hv-section-subtitle">
-                        Contamos con clientes del sector público y privado con quienes hemos trabajado en todo el país en el
-                        acompañamiento de servicios socioambientales para sus actividades petroleras, de generación de energía,
-                        telecomunicaciones, transporte, entre otros.
-                    </p>
+                    <p class="hv-section-subtitle">Contamos con clientes del sector público y privado con quienes hemos trabajado en todo el país en el acompañamiento de servicios socioambientales para sus actividades petroleras, de generación de energía, telecomunicaciones, transporte, entre otras.</p>
                 </div>
 
-                <div class="hv-clientes-grid" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_alcaldia_medellin.png" alt="Alcaldía de Medellín"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_epm.png" alt="EPM"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_claro.png" alt="Claro"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_movistar.png" alt="Movistar"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_tigo.png" alt="Tigo"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_wom.png" alt="WOM"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_enel.png" alt="Enel"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_hidroituango.png" alt="Hidroituango"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_gobernacion_antioquia.png" alt="Gobernación de Antioquia"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_corantioquia.png" alt="Corantioquia"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_bienestar_familiar.png" alt="Bienestar Familiar"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_edu.png" alt="EDU"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_tgi.png" alt="TGI"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_vetra.png" alt="Vetra"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_golden.png" alt="Golden"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_gulfsands.png" alt="Gulfsands"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_erm.png" alt="ERM"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_hse.png" alt="HSE"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_constructora_concreto.png" alt="Constructora Concreto"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_bicentenario.png" alt="Bicentenario"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_cpa.png" alt="CPA"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_bellicorp.png" alt="Bellicorp"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_fundacion_con_vida.png" alt="Fundación Con Vida"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_geoestudios.png" alt="Geoestudios"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_jcp.png" alt="JCP"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_mpc.png" alt="MPC"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_pacande.png" alt="Pacandé"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_qmc.png" alt="QMC"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_urra.png" alt="Urrá"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_wb.png" alt="WB"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_cabildo.png" alt="Cabildo"></div>
-                    <div class="hv-cliente-logo"><img src="images/empresas/logo_auditoria_ambienta.png" alt="Auditoría Ambiental"></div>
+                <!-- Banda de estadísticas (conteo animado) -->
+                <div class="hv-stats" data-aos="fade-up" data-aos-duration="800">
+                    <div class="hv-stat">
+                        <div class="hv-stat-value"><span class="hv-stat-num" data-hv-count="23">0</span><span class="hv-stat-suffix">+</span></div>
+                        <p>Años de experiencia</p>
+                    </div>
+                    <div class="hv-stat">
+                        <div class="hv-stat-value"><span class="hv-stat-num" data-hv-count="30">0</span><span class="hv-stat-suffix">+</span></div>
+                        <p>Clientes y aliados</p>
+                    </div>
+                    <div class="hv-stat">
+                        <div class="hv-stat-value"><span class="hv-stat-num" data-hv-count="100">0</span><span class="hv-stat-suffix">&#37;</span></div>
+                        <p>Compromiso socioambiental</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marquesina infinita de logos (pausa al pasar el mouse) -->
+            <div class="hv-marquee-wrap">
+                <div class="hv-marquee">
+                    <div class="hv-marquee-track">
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_alcaldia_medellin.png" alt="Alcaldia Medellin" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_auditoria_ambienta.png" alt="Auditoria Ambienta" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_bellicorp.png" alt="Bellicorp" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_bicentenario.png" alt="Bicentenario" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_bienestar_familiar.png" alt="Bienestar Familiar" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_cabildo.png" alt="Cabildo" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_claro.png" alt="Claro" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_constructora_concreto.png" alt="Constructora Concreto" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_corantioquia.png" alt="Corantioquia" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_cpa.png" alt="Cpa" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_edu.png" alt="Edu" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_enel.png" alt="Enel" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_epm.png" alt="Epm" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_erm.png" alt="Erm" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_fundacion_con_vida.png" alt="Fundacion Con Vida" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_geoestudios.png" alt="Geoestudios" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_alcaldia_medellin.png" alt="Alcaldia Medellin" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_auditoria_ambienta.png" alt="Auditoria Ambienta" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_bellicorp.png" alt="Bellicorp" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_bicentenario.png" alt="Bicentenario" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_bienestar_familiar.png" alt="Bienestar Familiar" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_cabildo.png" alt="Cabildo" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_claro.png" alt="Claro" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_constructora_concreto.png" alt="Constructora Concreto" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_corantioquia.png" alt="Corantioquia" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_cpa.png" alt="Cpa" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_edu.png" alt="Edu" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_enel.png" alt="Enel" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_epm.png" alt="Epm" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_erm.png" alt="Erm" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_fundacion_con_vida.png" alt="Fundacion Con Vida" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_geoestudios.png" alt="Geoestudios" loading="lazy"></div>
+                    </div>
+                </div>
+                <div class="hv-marquee hv-marquee--reverse">
+                    <div class="hv-marquee-track">
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_gobernacion_antioquia.png" alt="Gobernacion Antioquia" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_golden.png" alt="Golden" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_gulfsands.png" alt="Gulfsands" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_hidroituango.png" alt="Hidroituango" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_hse.png" alt="Hse" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_jcp.png" alt="Jcp" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_movistar.png" alt="Movistar" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_mpc.png" alt="Mpc" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_pacande.png" alt="Pacande" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_qmc.png" alt="Qmc" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_tgi.png" alt="Tgi" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_tigo.png" alt="Tigo" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_urra.png" alt="Urra" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_vetra.png" alt="Vetra" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_wb.png" alt="Wb" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_wom.png" alt="Wom" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_gobernacion_antioquia.png" alt="Gobernacion Antioquia" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_golden.png" alt="Golden" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_gulfsands.png" alt="Gulfsands" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_hidroituango.png" alt="Hidroituango" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_hse.png" alt="Hse" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_jcp.png" alt="Jcp" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_movistar.png" alt="Movistar" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_mpc.png" alt="Mpc" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_pacande.png" alt="Pacande" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_qmc.png" alt="Qmc" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_tgi.png" alt="Tgi" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_tigo.png" alt="Tigo" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_urra.png" alt="Urra" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_vetra.png" alt="Vetra" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_wb.png" alt="Wb" loading="lazy"></div>
+                        <div class="hv-cliente-logo"><img src="images/empresas/logo_wom.png" alt="Wom" loading="lazy"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -154,12 +220,6 @@
                         <div class="hv-footer-col">
                             <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS" class="hv-footer-logo">
                             <p>Empresa privada colombiana de servicios socioambientales. Profesionales comprometidos con el entorno social, ambiental y empresarial desde 2002.</p>
-                            <div class="hv-footer-social">
-                                <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                                <a href="#" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
-                            </div>
                         </div>
 
                         <!-- Col 2: Mapa del sitio -->
@@ -178,12 +238,14 @@
                         <div class="hv-footer-col">
                             <h4>Servicios</h4>
                             <ul>
-                                <li><a href="servicios.html#servicio-1">Gestión Socioambiental</a></li>
+                                <li><a href="servicios.html#servicio-1">Gestión Ambiental y Sostenibilidad</a></li>
                                 <li><a href="servicios.html#servicio-2">Consultas Previas</a></li>
-                                <li><a href="servicios.html#servicio-3">Estudios Ambientales</a></li>
-                                <li><a href="servicios.html#servicio-4">Gestión del Riesgo</a></li>
-                                <li><a href="servicios.html#servicio-5">Estudios Ecológicos</a></li>
-                                <li><a href="servicios.html#servicio-6">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-3">Gestión Social</a></li>
+                                <li><a href="servicios.html#servicio-4">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-5">Gestión del Riesgo</a></li>
+                                <li><a href="servicios.html#servicio-6">Estudios Ecológicos</a></li>
+                                <li><a href="servicios.html#servicio-7">Información Geográfica</a></li>
+                                <li><a href="servicios.html#servicio-8">Monitoreo y Permisos</a></li>
                             </ul>
                         </div>
 
@@ -234,7 +296,10 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <!-- Huella Verde Custom JS -->
-    <script src="js/huella-verde.js"></script>
+    <script src="js/huella-verde.min.js"></script>
+
+    <!-- Motor de animaciones (fondo vivo, parallax, scroll 3D) -->
+    <script src="js/hv-animations.min.js?v=2"></script>
 
 </body>
 </html>

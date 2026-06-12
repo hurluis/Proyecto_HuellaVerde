@@ -15,8 +15,8 @@
     <meta name="author" content="Huella Verde SAS">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="images/Fabicon-icon.png">
+    <link rel="apple-touch-icon" href="images/Fabicon-icon.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- FontAwesome Icons core CSS -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -33,10 +33,28 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <!-- Custom Huella Verde styles -->
-    <link href="css/huella-verde.css" rel="stylesheet">
+    <link href="css/huella-verde.min.css" rel="stylesheet">
+
+    <!-- Fondo vivo + animaciones de scroll -->
+    <link href="css/hv-animations.min.css?v=2" rel="stylesheet">
 
 </head>
 <body>
+
+    <!-- =============================================
+         FONDO CINEMATOGRAFICO GLOBAL
+         7 frames que se animan con el scroll + hojas
+    ============================================= -->
+    <div class="hv-bg" aria-hidden="true">
+        <div class="hv-frame hv-frame--1"></div>
+        <div class="hv-frame hv-frame--2"></div>
+        <div class="hv-frame hv-frame--3"></div>
+        <div class="hv-frame hv-frame--4"></div>
+        <div class="hv-frame hv-frame--5"></div>
+        <div class="hv-frame hv-frame--6"></div>
+        <div class="hv-frame hv-frame--7"></div>
+        <div class="hv-bg-leaves"></div>
+    </div>
 
     <div id="wrapper">
 
@@ -51,11 +69,6 @@
                         <span><i class="fa fa-phone"></i> +57 311 583 6788</span>
                         <span><i class="fa fa-envelope"></i> huellaverde@live.com</span>
                     </div>
-                    <div class="hv-topbar-right">
-                        <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -67,7 +80,7 @@
             <div class="container">
                 <div class="hv-header-inner">
                     <a href="inicio.html" class="hv-logo">
-                        <img src="images/huella_verde_horizontal.png" alt="Huella Verde SAS">
+                        <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS">
                     </a>
 
                     <!-- Hamburger para móvil -->
@@ -96,7 +109,7 @@
         <section id="inicio" class="hv-section hv-inicio">
             <div class="container">
                 <div class="hv-inicio-content">
-                    <div class="hv-inicio-text" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hv-inicio-text" data-aos="fade-up" data-aos-duration="1000">
                         <span class="hv-section-tag">Nuestra Empresa</span>
                         <h1 class="hv-main-title">HUELLA VERDE <span>SAS</span></h1>
                         <div class="hv-title-divider"></div>
@@ -112,19 +125,80 @@
                             Conoce nuestros servicios <i class="fa fa-arrow-right"></i>
                         </a>
                     </div>
-                    <div class="hv-inicio-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                        <div class="hv-image-frame">
-                            <img src="upload/garden_single_01.jpg" alt="Huella Verde - Servicios Socioambientales" class="img-fluid">
-                            <div class="hv-image-accent"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <!-- Decorative wave -->
-            <div class="hv-wave-divider">
-                <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                    <path d="M0,60 C360,120 720,0 1440,60 L1440,120 L0,120 Z" fill="#f0fae5"/>
-                </svg>
+        </section>
+
+        <!-- =============================================
+             SECCIÓN: NUESTRA HUELLA - Cámara viajera
+             Sección fijada (sticky): el título recibe al
+             visitante y luego la "cámara" viaja entre las
+             4 fotos del trabajo real, cada una con su texto,
+             manejado por el scroll (js/hv-animations.js)
+        ============================================= -->
+        <section class="hv-scroll-showcase" id="nuestra-huella">
+            <div class="hv-showcase-sticky">
+
+                <!-- Lienzo por el que viaja la cámara -->
+                <div class="hv-showcase-media">
+                    <div class="hv-cam">
+                        <article class="hv-cam-stop hv-cam-stop--1">
+                            <div class="hv-cam-photo">
+                                <img src="images/principal/slide1.jpg" alt="Comunidad reunida frente a una maloca tradicional">
+                            </div>
+                            <div class="hv-cam-text">
+                                <span class="hv-show-step">01 — 04</span>
+                                <h3>Amanecer en el territorio</h3>
+                                <p>Cada proyecto comienza con una mirada completa del paisaje y sus comunidades.</p>
+                            </div>
+                        </article>
+                        <article class="hv-cam-stop hv-cam-stop--2">
+                            <div class="hv-cam-photo">
+                                <img src="images/principal/slide2.jpg" alt="Cascada entre la selva colombiana" loading="lazy">
+                            </div>
+                            <div class="hv-cam-text">
+                                <span class="hv-show-step">02 — 04</span>
+                                <h3>La vida se abre camino</h3>
+                                <p>Protegemos los refugios donde el agua y la vida persisten.</p>
+                            </div>
+                        </article>
+                        <article class="hv-cam-stop hv-cam-stop--3">
+                            <div class="hv-cam-photo">
+                                <img src="images/principal/slide3.jpg" alt="Profesional de Huella Verde compartiendo con niños de la comunidad" loading="lazy">
+                            </div>
+                            <div class="hv-cam-text">
+                                <span class="hv-show-step">03 — 04</span>
+                                <h3>Sembramos futuro</h3>
+                                <p>Cada proyecto deja una huella positiva en el entorno y sus comunidades.</p>
+                            </div>
+                        </article>
+                        <article class="hv-cam-stop hv-cam-stop--4">
+                            <div class="hv-cam-photo">
+                                <img src="images/principal/slide4.jpg" alt="Socialización de proyecto con la comunidad" loading="lazy">
+                            </div>
+                            <div class="hv-cam-text">
+                                <span class="hv-show-step">04 — 04</span>
+                                <h3>Raíces profundas</h3>
+                                <p>Más de 20 años de compromiso socioambiental en Colombia.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Título de entrada: se desvanece cuando inicia el recorrido -->
+                <div class="hv-scroll-header">
+                    <span class="hv-section-tag">Nuestro Territorio</span>
+                    <h2 class="hv-scroll-title">
+                        Donde dejamos nuestra
+                        <span>Huella Verde</span>
+                    </h2>
+                    <p class="hv-scroll-subtitle">
+                        Más de 20 años acompañando proyectos con responsabilidad social
+                        y ambiental en los territorios de Colombia. Sigue bajando para
+                        recorrer nuestra huella.
+                    </p>
+                </div>
+
             </div>
         </section>
 
@@ -139,12 +213,6 @@
                         <div class="hv-footer-col">
                             <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS" class="hv-footer-logo">
                             <p>Empresa privada colombiana de servicios socioambientales. Profesionales comprometidos con el entorno social, ambiental y empresarial desde 2002.</p>
-                            <div class="hv-footer-social">
-                                <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                                <a href="#" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
-                            </div>
                         </div>
 
                         <!-- Col 2: Mapa del sitio -->
@@ -163,12 +231,14 @@
                         <div class="hv-footer-col">
                             <h4>Servicios</h4>
                             <ul>
-                                <li><a href="servicios.html#servicio-1">Gestión Socioambiental</a></li>
+                                <li><a href="servicios.html#servicio-1">Gestión Ambiental y Sostenibilidad</a></li>
                                 <li><a href="servicios.html#servicio-2">Consultas Previas</a></li>
-                                <li><a href="servicios.html#servicio-3">Estudios Ambientales</a></li>
-                                <li><a href="servicios.html#servicio-4">Gestión del Riesgo</a></li>
-                                <li><a href="servicios.html#servicio-5">Estudios Ecológicos</a></li>
-                                <li><a href="servicios.html#servicio-6">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-3">Gestión Social</a></li>
+                                <li><a href="servicios.html#servicio-4">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-5">Gestión del Riesgo</a></li>
+                                <li><a href="servicios.html#servicio-6">Estudios Ecológicos</a></li>
+                                <li><a href="servicios.html#servicio-7">Información Geográfica</a></li>
+                                <li><a href="servicios.html#servicio-8">Monitoreo y Permisos</a></li>
                             </ul>
                         </div>
 
@@ -219,7 +289,10 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <!-- Huella Verde Custom JS -->
-    <script src="js/huella-verde.js"></script>
+    <script src="js/huella-verde.min.js"></script>
+
+    <!-- Motor de animaciones (fondo vivo, parallax, scroll 3D) -->
+    <script src="js/hv-animations.min.js?v=2"></script>
 
 </body>
 </html>

@@ -15,8 +15,8 @@
     <meta name="author" content="Huella Verde SAS">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="images/Fabicon-icon.png">
+    <link rel="apple-touch-icon" href="images/Fabicon-icon.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- FontAwesome Icons core CSS -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -33,10 +33,28 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <!-- Custom Huella Verde styles -->
-    <link href="css/huella-verde.css" rel="stylesheet">
+    <link href="css/huella-verde.min.css" rel="stylesheet">
+
+    <!-- Fondo vivo + animaciones de scroll -->
+    <link href="css/hv-animations.min.css?v=2" rel="stylesheet">
 
 </head>
 <body>
+
+    <!-- =============================================
+         FONDO CINEMATOGRAFICO GLOBAL
+         7 frames que se animan con el scroll + hojas
+    ============================================= -->
+    <div class="hv-bg" aria-hidden="true">
+        <div class="hv-frame hv-frame--1"></div>
+        <div class="hv-frame hv-frame--2"></div>
+        <div class="hv-frame hv-frame--3"></div>
+        <div class="hv-frame hv-frame--4"></div>
+        <div class="hv-frame hv-frame--5"></div>
+        <div class="hv-frame hv-frame--6"></div>
+        <div class="hv-frame hv-frame--7"></div>
+        <div class="hv-bg-leaves"></div>
+    </div>
 
     <div id="wrapper">
 
@@ -51,11 +69,6 @@
                         <span><i class="fa fa-phone"></i> +57 311 583 6788</span>
                         <span><i class="fa fa-envelope"></i> huellaverde@live.com</span>
                     </div>
-                    <div class="hv-topbar-right">
-                        <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -67,7 +80,7 @@
             <div class="container">
                 <div class="hv-header-inner">
                     <a href="inicio.html" class="hv-logo">
-                        <img src="images/huella_verde_horizontal.png" alt="Huella Verde SAS">
+                        <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS">
                     </a>
 
                     <!-- Hamburger para móvil -->
@@ -104,16 +117,17 @@
 
                 <div class="hv-servicios-grid">
 
-                    <!-- Servicio 1: Gestión Socioambiental -->
+                    <!-- Servicio 1: Gestión Ambiental y Sostenibilidad -->
                     <div class="hv-servicio-card" id="servicio-1" data-aos="fade-up" data-aos-duration="700" data-aos-delay="0">
                         <div class="hv-servicio-img">
-                            <img src="upload/garden_sq_01.jpg" alt="Gestión Socioambiental">
+                            <span class="hv-servicio-num">01</span>
+                            <img src="images/servicios/gestion-ambiental-portada.jpg" alt="Gestión Ambiental y Sostenibilidad" loading="lazy">
                             <div class="hv-servicio-overlay">
                                 <i class="fa fa-leaf"></i>
                             </div>
                         </div>
                         <div class="hv-servicio-body">
-                            <h3>Gestión Socioambiental</h3>
+                            <h3>Gestión Ambiental y Sostenibilidad</h3>
                             <button class="hv-btn hv-btn-outline" onclick="toggleServicio(this)">
                                 Ver más <i class="fa fa-plus"></i>
                             </button>
@@ -135,8 +149,8 @@
                                     </ul>
                                 </div>
                                 <div class="hv-detail-images">
-                                    <img src="upload/garden_sq_02.jpg" alt="Gestión socioambiental" class="img-fluid" data-aos="zoom-in">
-                                    <img src="upload/garden_sq_03.jpg" alt="Gestión socioambiental" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
+                                    <img src="images/servicios/gestion-ambiental-1.jpg" alt="Gestión Ambiental y Sostenibilidad" class="img-fluid" data-aos="zoom-in">
+                                    <img src="images/servicios/gestion-ambiental-2.jpg" alt="Gestión Ambiental y Sostenibilidad" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
                                 </div>
                             </div>
                             <button class="hv-btn-close" onclick="toggleServicio(this)">
@@ -151,7 +165,8 @@
                     <!-- Servicio 2: Consultas Previas y Relacionamiento Étnico -->
                     <div class="hv-servicio-card" id="servicio-2" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
                         <div class="hv-servicio-img">
-                            <img src="upload/garden_sq_04.jpg" alt="Consultas Previas y Relacionamiento Étnico">
+                            <span class="hv-servicio-num">02</span>
+                            <img src="images/servicios/consultas-previas-portada.jpg" alt="Consultas Previas y Relacionamiento Étnico" loading="lazy">
                             <div class="hv-servicio-overlay">
                                 <i class="fa fa-users"></i>
                             </div>
@@ -174,8 +189,8 @@
                                     </ul>
                                 </div>
                                 <div class="hv-detail-images">
-                                    <img src="upload/garden_sq_05.jpg" alt="Consultas previas" class="img-fluid" data-aos="zoom-in">
-                                    <img src="upload/garden_sq_06.jpg" alt="Relacionamiento étnico" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
+                                    <img src="images/servicios/consultas-previas-1.jpg" alt="Consultas Previas y Relacionamiento Étnico" class="img-fluid" data-aos="zoom-in">
+                                    <img src="images/servicios/consultas-previas-2.jpg" alt="Consultas Previas y Relacionamiento Étnico" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
                                 </div>
                             </div>
                             <button class="hv-btn-close" onclick="toggleServicio(this)">
@@ -187,16 +202,51 @@
                         </div>
                     </div>
 
-                    <!-- Servicio 3: Estudios Ambientales -->
+                    <!-- Servicio 3: Gestión Social -->
                     <div class="hv-servicio-card" id="servicio-3" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
                         <div class="hv-servicio-img">
-                            <img src="upload/garden_sq_07.jpg" alt="Estudios Ambientales">
+                            <span class="hv-servicio-num">03</span>
+                            <img src="images/servicios/gestion-social-portada.jpg" alt="Gestión Social" loading="lazy">
                             <div class="hv-servicio-overlay">
-                                <i class="fa fa-file-text"></i>
+                                <i class="fa fa-handshake-o"></i>
                             </div>
                         </div>
                         <div class="hv-servicio-body">
-                            <h3>Estudios Ambientales</h3>
+                            <h3>Gestión Social</h3>
+                            <button class="hv-btn hv-btn-outline" onclick="toggleServicio(this)">
+                                Ver más <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="hv-servicio-detail" style="display:none;">
+                            <div class="hv-detail-content">
+                                <div class="hv-detail-text">
+                                    <p class="hv-detail-pending">Estamos preparando el detalle de este servicio. Contáctanos y te contamos cómo podemos acompañar tu proyecto.</p>
+                                </div>
+                                <div class="hv-detail-images">
+                                    <img src="images/servicios/gestion-social-1.jpg" alt="Gestión Social" class="img-fluid" data-aos="zoom-in">
+                                    <img src="images/servicios/gestion-social-2.jpg" alt="Gestión Social" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
+                                </div>
+                            </div>
+                            <button class="hv-btn-close" onclick="toggleServicio(this)">
+                                Cerrar <i class="fa fa-times"></i>
+                            </button>
+                            <a href="contacto.html" class="hv-btn hv-btn-primary hv-btn-contactar">
+                                Contáctenos <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 4: Ordenamiento Ambiental y Territorial -->
+                    <div class="hv-servicio-card" id="servicio-4" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
+                        <div class="hv-servicio-img">
+                            <span class="hv-servicio-num">04</span>
+                            <img src="images/servicios/ordenamiento-portada.jpg" alt="Ordenamiento Ambiental y Territorial" loading="lazy">
+                            <div class="hv-servicio-overlay">
+                                <i class="fa fa-map"></i>
+                            </div>
+                        </div>
+                        <div class="hv-servicio-body">
+                            <h3>Ordenamiento Ambiental y Territorial</h3>
                             <button class="hv-btn hv-btn-outline" onclick="toggleServicio(this)">
                                 Ver más <i class="fa fa-plus"></i>
                             </button>
@@ -205,18 +255,16 @@
                             <div class="hv-detail-content">
                                 <div class="hv-detail-text">
                                     <ul class="hv-detail-list">
-                                        <li>Planes de ordenamiento del recurso hídrico POMCAS, PORH.</li>
-                                        <li>Diseño de PMIRS, formulación para empresas, rellenos sanitarios.</li>
-                                        <li>Definición de políticas ambientales.</li>
-                                        <li>Informes de cumplimiento ambiental (ICA).</li>
-                                        <li>Diagnósticos ambientales de alternativas (DAA), Medidas de manejo ambiental (MMA) y Estudios de impacto ambiental (EIA).</li>
-                                        <li>Medidas de protección ambiental.</li>
-                                        <li>Caracterizaciones ambientales de componentes bióticos y abióticos.</li>
+                                        <li>Revisiones, acompañamiento y actualizaciones de Planes de Ordenamiento Territorial - POT, Planes Básicos de Ordenamiento Territorial - PBOT y Esquemas de Ordenamiento Territorial - EOT.</li>
+                                        <li>Planes de Ordenación y manejo de cuencas POMCAS y PORH planes de ordenamiento del recurso hídrico.</li>
+                                        <li>Planes de saneamiento y manejo de vertimientos PSMV.</li>
+                                        <li>Zonificaciones ambientales.</li>
+                                        <li>Formulación y actualización de planes de gestión integral de residuos sólidos.</li>
                                     </ul>
                                 </div>
                                 <div class="hv-detail-images">
-                                    <img src="upload/garden_sq_08.jpg" alt="Estudios ambientales" class="img-fluid" data-aos="zoom-in">
-                                    <img src="upload/garden_sq_09.jpg" alt="Estudios ambientales" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
+                                    <img src="images/servicios/ordenamiento-1.jpg" alt="Ordenamiento Ambiental y Territorial" class="img-fluid" data-aos="zoom-in">
+                                    <img src="images/servicios/ordenamiento-2.jpg" alt="Ordenamiento Ambiental y Territorial" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
                                 </div>
                             </div>
                             <button class="hv-btn-close" onclick="toggleServicio(this)">
@@ -228,10 +276,11 @@
                         </div>
                     </div>
 
-                    <!-- Servicio 4: Gestión del Riesgo -->
-                    <div class="hv-servicio-card" id="servicio-4" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
+                    <!-- Servicio 5: Gestión del Riesgo -->
+                    <div class="hv-servicio-card" id="servicio-5" data-aos="fade-up" data-aos-duration="700" data-aos-delay="0">
                         <div class="hv-servicio-img">
-                            <img src="upload/garden_single_02.jpg" alt="Gestión del Riesgo">
+                            <span class="hv-servicio-num">05</span>
+                            <img src="images/servicios/gestion-riesgo-portada.jpg" alt="Gestión del Riesgo" loading="lazy">
                             <div class="hv-servicio-overlay">
                                 <i class="fa fa-shield"></i>
                             </div>
@@ -255,8 +304,8 @@
                                     </ul>
                                 </div>
                                 <div class="hv-detail-images">
-                                    <img src="upload/garden_single_03.jpg" alt="Gestión del riesgo" class="img-fluid" data-aos="zoom-in">
-                                    <img src="upload/garden_cat_01.jpg" alt="Gestión del riesgo" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
+                                    <img src="images/servicios/gestion-riesgo-1.jpg" alt="Gestión del Riesgo" class="img-fluid" data-aos="zoom-in">
+                                    <img src="images/servicios/gestion-riesgo-2.jpg" alt="Gestión del Riesgo" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
                                 </div>
                             </div>
                             <button class="hv-btn-close" onclick="toggleServicio(this)">
@@ -268,10 +317,11 @@
                         </div>
                     </div>
 
-                    <!-- Servicio 5: Estudios Ecológicos y Forestales -->
-                    <div class="hv-servicio-card" id="servicio-5" data-aos="fade-up" data-aos-duration="700" data-aos-delay="0">
+                    <!-- Servicio 6: Estudios Ecológicos y Forestales -->
+                    <div class="hv-servicio-card" id="servicio-6" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
                         <div class="hv-servicio-img">
-                            <img src="upload/garden_cat_02.jpg" alt="Estudios Ecológicos y Forestales">
+                            <span class="hv-servicio-num">06</span>
+                            <img src="images/servicios/estudios-ecologicos-portada.jpg" alt="Estudios Ecológicos y Forestales" loading="lazy">
                             <div class="hv-servicio-overlay">
                                 <i class="fa fa-tree"></i>
                             </div>
@@ -293,47 +343,8 @@
                                     </ul>
                                 </div>
                                 <div class="hv-detail-images">
-                                    <img src="upload/garden_cat_03.jpg" alt="Estudios ecológicos" class="img-fluid" data-aos="zoom-in">
-                                    <img src="upload/garden_sq_01.jpg" alt="Estudios forestales" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
-                                </div>
-                            </div>
-                            <button class="hv-btn-close" onclick="toggleServicio(this)">
-                                Cerrar <i class="fa fa-times"></i>
-                            </button>
-                            <a href="contacto.html" class="hv-btn hv-btn-primary hv-btn-contactar">
-                                Contáctenos <i class="fa fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Servicio 6: Ordenamiento Ambiental y Territorial -->
-                    <div class="hv-servicio-card" id="servicio-6" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
-                        <div class="hv-servicio-img">
-                            <img src="upload/garden_sq_02.jpg" alt="Ordenamiento Ambiental y Territorial">
-                            <div class="hv-servicio-overlay">
-                                <i class="fa fa-map"></i>
-                            </div>
-                        </div>
-                        <div class="hv-servicio-body">
-                            <h3>Ordenamiento Ambiental y Territorial</h3>
-                            <button class="hv-btn hv-btn-outline" onclick="toggleServicio(this)">
-                                Ver más <i class="fa fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="hv-servicio-detail" style="display:none;">
-                            <div class="hv-detail-content">
-                                <div class="hv-detail-text">
-                                    <ul class="hv-detail-list">
-                                        <li>Revisiones, acompañamiento y actualizaciones de Planes de Ordenamiento Territorial - POT, Planes Básicos de Ordenamiento Territorial - PBOT y Esquemas de Ordenamiento Territorial - EOT.</li>
-                                        <li>Planes de Ordenación y manejo de cuencas POMCAS y PORH planes de ordenamiento del recurso hídrico.</li>
-                                        <li>Planes de saneamiento y manejo de vertimientos PSMV.</li>
-                                        <li>Zonificaciones ambientales.</li>
-                                        <li>Formulación y actualización de planes de gestión integral de residuos sólidos.</li>
-                                    </ul>
-                                </div>
-                                <div class="hv-detail-images">
-                                    <img src="upload/garden_sq_03.jpg" alt="Ordenamiento ambiental" class="img-fluid" data-aos="zoom-in">
-                                    <img src="upload/garden_sq_04.jpg" alt="Ordenamiento territorial" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
+                                    <img src="images/servicios/estudios-ecologicos-1.jpg" alt="Estudios Ecológicos y Forestales" class="img-fluid" data-aos="zoom-in">
+                                    <img src="images/servicios/estudios-ecologicos-2.jpg" alt="Estudios Ecológicos y Forestales" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
                                 </div>
                             </div>
                             <button class="hv-btn-close" onclick="toggleServicio(this)">
@@ -348,7 +359,8 @@
                     <!-- Servicio 7: Sistemas de Información Geográfica -->
                     <div class="hv-servicio-card" id="servicio-7" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
                         <div class="hv-servicio-img">
-                            <img src="upload/garden_sq_05.jpg" alt="Sistemas de Información Geográfica">
+                            <span class="hv-servicio-num">07</span>
+                            <img src="images/servicios/sig-portada.jpg" alt="Sistemas de Información Geográfica" loading="lazy">
                             <div class="hv-servicio-overlay">
                                 <i class="fa fa-globe"></i>
                             </div>
@@ -378,8 +390,8 @@
                                     </ul>
                                 </div>
                                 <div class="hv-detail-images">
-                                    <img src="upload/garden_sq_06.jpg" alt="SIG" class="img-fluid" data-aos="zoom-in">
-                                    <img src="upload/garden_sq_07.jpg" alt="Información geográfica" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
+                                    <img src="images/servicios/sig-1.jpg" alt="Sistemas de Información Geográfica" class="img-fluid" data-aos="zoom-in">
+                                    <img src="images/servicios/sig-2.jpg" alt="Sistemas de Información Geográfica" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
                                 </div>
                             </div>
                             <button class="hv-btn-close" onclick="toggleServicio(this)">
@@ -391,16 +403,17 @@
                         </div>
                     </div>
 
-                    <!-- Servicio 8: Sistemas Integrados de Gestión -->
+                    <!-- Servicio 8: Monitoreo, Evaluación y Gestión de Permisos Ambientales -->
                     <div class="hv-servicio-card" id="servicio-8" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
                         <div class="hv-servicio-img">
-                            <img src="upload/garden_sq_08.jpg" alt="Sistemas Integrados de Gestión">
+                            <span class="hv-servicio-num">08</span>
+                            <img src="images/servicios/monitoreo-portada.jpg" alt="Monitoreo, Evaluación y Gestión de Permisos Ambientales" loading="lazy">
                             <div class="hv-servicio-overlay">
-                                <i class="fa fa-cogs"></i>
+                                <i class="fa fa-line-chart"></i>
                             </div>
                         </div>
                         <div class="hv-servicio-body">
-                            <h3>Sistemas Integrados de Gestión</h3>
+                            <h3>Monitoreo, Evaluación y Gestión de Permisos Ambientales</h3>
                             <button class="hv-btn hv-btn-outline" onclick="toggleServicio(this)">
                                 Ver más <i class="fa fa-plus"></i>
                             </button>
@@ -408,17 +421,11 @@
                         <div class="hv-servicio-detail" style="display:none;">
                             <div class="hv-detail-content">
                                 <div class="hv-detail-text">
-                                    <ul class="hv-detail-list">
-                                        <li>Interventorías ambientales.</li>
-                                        <li>Auditorías ambientales.</li>
-                                        <li>Auditorías externas.</li>
-                                        <li>Auditorias para PBCs.</li>
-                                        <li>Auditorias sociales.</li>
-                                    </ul>
+                                    <p class="hv-detail-pending">Estamos preparando el detalle de este servicio. Contáctanos y te contamos cómo podemos acompañar tu proyecto.</p>
                                 </div>
                                 <div class="hv-detail-images">
-                                    <img src="upload/garden_sq_09.jpg" alt="Sistemas integrados" class="img-fluid" data-aos="zoom-in">
-                                    <img src="upload/garden_single_01.jpg" alt="Gestión integrada" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
+                                    <img src="images/servicios/monitoreo-1.jpg" alt="Monitoreo, Evaluación y Gestión de Permisos Ambientales" class="img-fluid" data-aos="zoom-in">
+                                    <img src="images/servicios/monitoreo-2.jpg" alt="Monitoreo, Evaluación y Gestión de Permisos Ambientales" class="img-fluid" data-aos="zoom-in" data-aos-delay="100">
                                 </div>
                             </div>
                             <button class="hv-btn-close" onclick="toggleServicio(this)">
@@ -445,12 +452,6 @@
                         <div class="hv-footer-col">
                             <img src="images/huella_verde_horizontal_dark.png" alt="Huella Verde SAS" class="hv-footer-logo">
                             <p>Empresa privada colombiana de servicios socioambientales. Profesionales comprometidos con el entorno social, ambiental y empresarial desde 2002.</p>
-                            <div class="hv-footer-social">
-                                <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                                <a href="#" aria-label="YouTube"><i class="fa fa-youtube-play"></i></a>
-                            </div>
                         </div>
 
                         <!-- Col 2: Mapa del sitio -->
@@ -469,12 +470,14 @@
                         <div class="hv-footer-col">
                             <h4>Servicios</h4>
                             <ul>
-                                <li><a href="servicios.html#servicio-1">Gestión Socioambiental</a></li>
+                                <li><a href="servicios.html#servicio-1">Gestión Ambiental y Sostenibilidad</a></li>
                                 <li><a href="servicios.html#servicio-2">Consultas Previas</a></li>
-                                <li><a href="servicios.html#servicio-3">Estudios Ambientales</a></li>
-                                <li><a href="servicios.html#servicio-4">Gestión del Riesgo</a></li>
-                                <li><a href="servicios.html#servicio-5">Estudios Ecológicos</a></li>
-                                <li><a href="servicios.html#servicio-6">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-3">Gestión Social</a></li>
+                                <li><a href="servicios.html#servicio-4">Ordenamiento Territorial</a></li>
+                                <li><a href="servicios.html#servicio-5">Gestión del Riesgo</a></li>
+                                <li><a href="servicios.html#servicio-6">Estudios Ecológicos</a></li>
+                                <li><a href="servicios.html#servicio-7">Información Geográfica</a></li>
+                                <li><a href="servicios.html#servicio-8">Monitoreo y Permisos</a></li>
                             </ul>
                         </div>
 
@@ -525,7 +528,10 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <!-- Huella Verde Custom JS -->
-    <script src="js/huella-verde.js"></script>
+    <script src="js/huella-verde.min.js"></script>
+
+    <!-- Motor de animaciones (fondo vivo, parallax, scroll 3D) -->
+    <script src="js/hv-animations.min.js?v=2"></script>
 
 </body>
 </html>
