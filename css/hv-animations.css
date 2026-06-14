@@ -683,7 +683,12 @@ a:hover {
     font-weight: 900;
     line-height: 1;
     color: transparent;
-    -webkit-text-stroke: 2px rgba(166, 230, 63, 0.22);
+    /* Trazo más marcado para que el número se aprecie también
+       sobre los fondos claros (amaneceres) de las primeras razones */
+    -webkit-text-stroke: 3px rgba(166, 230, 63, 0.55);
+    /* Halo oscuro sutil: levanta el contorno sobre fondos brillantes
+       y es imperceptible sobre el fondo negro de la última razón */
+    filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.45));
     opacity: 0;
     pointer-events: none;
     will-change: transform, opacity;
@@ -1136,12 +1141,15 @@ a:hover {
     .hv-cam-text h3 { font-size: 24px; }
     .hv-cam-text p { font-size: 15px; }
 
-    .hv-valor-journey { height: 580vh; }
-    .hv-vj-bignum { font-size: 70vw; }
+    /* touch-action: el gesto vertical manda; nada de capturas
+       laterales raras mientras se recorre la sección */
+    .hv-valor-journey { height: 580vh; touch-action: pan-y; }
+    .hv-vj-bignum { font-size: 62vw; }
     .hv-vj-counter { right: 16px; bottom: 22px; }
-    .hv-vj-stop .hv-valor-icon { width: 68px; height: 68px; }
+    .hv-vj-stop { width: 92vw; }
+    .hv-vj-stop .hv-valor-icon { width: 68px; height: 68px; margin-bottom: 20px; }
     .hv-vj-stop .hv-valor-icon i { font-size: 28px; }
-    .hv-vj-stop h3 { font-size: 22px; }
+    .hv-vj-stop h3 { font-size: 22px; padding: 0 10px; }
 
     .hv-valor-grid-items { grid-template-columns: 1fr; gap: 14px; }
     .hv-stats { grid-template-columns: 1fr; gap: 14px; margin-bottom: 50px; }
