@@ -300,14 +300,18 @@
     var vjLine = vjSection ? vjSection.querySelector('.hv-vj-line-fill') : null;
     var vj = { pos: 0, tgt: 0, gate: 0, p: 0, EASE: 0.075, pts: [] };
 
-    var VJ_START = 0.09;
-    var VJ_SPAN = 0.88;
+    var VJ_START = 0.13;
+    var VJ_SPAN = 0.83;
 
     // Zigzag del lienzo: cada razón sale por una esquina mientras
     // la siguiente llega por la opuesta (mismo lenguaje que inicio)
     if (vjStops.length) {
+        // En móvil reducimos la amplitud horizontal del zigzag: los
+        // títulos se quedan cerca del centro, no salen de pantalla y
+        // el recorrido es fácil de seguir con el dedo.
+        var vjAmpX = window.innerWidth <= 768 ? 0.18 : 1;
         for (var s = 0; s < vjStops.length; s++) {
-            var zx = s === 0 ? 0 : (s % 2 === 1 ? 56 : -54) + (s % 3) * 2;
+            var zx = s === 0 ? 0 : ((s % 2 === 1 ? 56 : -54) + (s % 3) * 2) * vjAmpX;
             var zy = s * 58;
             vj.pts.push({ x: zx, y: zy });
             vjStops[s].style.left = zx + 'vw';
@@ -337,7 +341,7 @@
         // Número gigante de fondo (estilo specs)
         if (vjBigNum) {
             if (vjBigNum.textContent !== label) vjBigNum.textContent = label;
-            vjBigNum.style.opacity = (0.85 * vj.gate).toFixed(3);
+            vjBigNum.style.opacity = vj.gate.toFixed(3);
         }
 
         if (vjNum) {
@@ -523,7 +527,10 @@
                 }
             }
 
-            vj.gate = clamp01((vp - 0.06) / 0.08);
+            // El gate termina (=1) en vp≈0.10, ANTES de que el recorrido
+            // arranque en VJ_START (0.13). Así la primera parada alcanza
+            // opacidad completa con la capa ya totalmente visible.
+            vj.gate = clamp01((vp - 0.05) / 0.05);
             vj.tgt = clamp01((vp - VJ_START) / VJ_SPAN) * (vjStops.length - 1);
 
             if (reducedMotion) {
