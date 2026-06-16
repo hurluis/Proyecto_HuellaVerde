@@ -2,6 +2,12 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.huellaverde.co" }],
+      "destination": "https://huellaverde.co/:path*",
+      "permanent": true
+    },
     { "source": "/", "destination": "/inicio", "permanent": false },
     { "source": "/index", "destination": "/inicio", "permanent": false }
   ]
